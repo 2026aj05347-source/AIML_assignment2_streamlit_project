@@ -4,7 +4,7 @@
 Build an interactive Streamlit application that loads pre-trained classification models, accepts a labelled test CSV, and reports Accuracy, AUC, Precision, Recall, F1, MCC, a confusion matrix, and a classification report. The app evaluates uploaded data without retraining models.
 
 ## b. Dataset description
-- **Dataset:** Wisconsin Diagnostic Breast Cancer (WDBC), originally from the UCI Machine Learning Repository and made available through `sklearn.datasets.load_breast_cancer`.
+- **Dataset:** Wisconsin Diagnostic Breast Cancer (WDBC), from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/17/breast+cancer+wisconsin+diagnostic); `data/breast_cancer_full_dataset.csv` is included in this repository.
 - **Task:** Binary classification of breast-cancer diagnostic observations.
 - **Size:** 569 observations and 30 numeric input features.
 - **Target:** `target` — `0` = malignant, `1` = benign.
@@ -36,10 +36,11 @@ All five models use the same training/test split. Preprocessing is stored in eac
 **Overall winner for this split:** Logistic Regression by F1 score (0.9889). This is only a split-specific result, not a guarantee of generalization; discuss other metrics and the cost of false positives/false negatives in your final report.
 
 ## Run locally
-1. Create/activate a Python environment (Python 3.10 or 3.11 recommended).
+1. Create/activate a Python 3.11 or newer environment.
 2. Install dependencies: `pip install -r requirements.txt`
-3. Start the app: `streamlit run app.py`
-4. Upload `test_data.csv` to check all metrics and the confusion matrix.
+3. To reproduce the saved models and test split, run `python train.py`. This writes five pipelines under `model/` and recreates `test_data.csv`.
+4. Start the app: `streamlit run app.py`
+5. Upload `test_data.csv` to check all metrics and the confusion matrix.
 
 ## Deploy on Streamlit Community Cloud
 1. Push the project folder to your GitHub repository.
@@ -51,9 +52,11 @@ All five models use the same training/test split. Preprocessing is stored in eac
 ```text
 aiml_assignment2_streamlit/
 ├── app.py
+├── train.py
 ├── requirements.txt
 ├── README.md
 ├── .gitignore
+├── bits-pilani-logo.png
 ├── test_data.csv
 ├── data/
 │   └── breast_cancer_full_dataset.csv

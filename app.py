@@ -21,8 +21,15 @@ MODEL_FILES = {
 }
 
 st.set_page_config(page_title="AIML Assignment 2 | Classifier Lab", page_icon="🧪", layout="wide")
-st.title("🧪 Classifier Lab")
-st.caption("M.Tech AIML · Machine Learning Assignment 2")
+logo_col, title_col, student_col = st.columns([1, 4, 2])
+with logo_col:
+    st.image(ROOT / "bits-pilani-logo.png", width=105)
+with title_col:
+    st.title("🧪 Classifier Lab")
+    st.caption("M.Tech AIML · Machine Learning Assignment 2")
+with student_col:
+    st.markdown("**Student**  \nVinod Kumar Tiwari")
+    st.markdown("**BITS ID**  \n2026AJ0534")
 st.write(
     "Evaluate five saved classification pipelines on a labelled CSV test set. "
     "The app **does not retrain** models on uploaded data."
