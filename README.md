@@ -36,17 +36,37 @@ All five models use the same training/test split. Preprocessing is stored in eac
 **Overall winner for this split:** Logistic Regression by F1 score (0.9889). This is only a split-specific result, not a guarantee of generalization; discuss other metrics and the cost of false positives/false negatives in your final report.
 
 ## Run locally
-1. Create/activate a Python 3.11 or newer environment.
-2. Install dependencies: `pip install -r requirements.txt`
-3. To reproduce the saved models and test split, run `python train.py`. This writes five pipelines under `model/` and recreates `test_data.csv`.
-4. Start the app: `streamlit run app.py`
-5. Upload `test_data.csv` to check all metrics and the confusion matrix.
+From a terminal, change to the project folder and create/activate a Python 3.11 or newer environment.
+
+**macOS / Linux**
+```bash
+cd AIML_assignment2_streamlit_project
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+streamlit run app.py
+```
+
+**Windows PowerShell**
+```powershell
+cd AIML_assignment2_streamlit_project
+py -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+streamlit run app.py
+```
+
+Streamlit prints a local URL (usually `http://localhost:8501`) in the terminal; open it in a browser. To reproduce the saved models and test split before starting the app, run `python train.py`. This writes five pipelines under `model/` and recreates `test_data.csv`. Upload `test_data.csv` in the app to check the metrics and confusion matrix.
 
 ## Deploy on Streamlit Community Cloud
-1. Push the project folder to your GitHub repository.
+Docker is not required for Streamlit Community Cloud. It installs the packages listed in `requirements.txt` and runs the app entry point you select.
+
+1. Push the project to GitHub, including `app.py`, `requirements.txt`, and the `model/` files used by the app.
 2. Open https://share.streamlit.io/ and sign in with GitHub.
-3. Choose **Create app**, select the repository, branch, and `app.py`, then deploy.
+3. Choose **Create app**, select the repository and branch, set the app file path to `app.py`, then deploy.
 4. Copy the live app URL for your submission PDF.
+
+Use a Dockerfile only if you need custom system packages or runtime configuration that Community Cloud's standard Python environment does not provide.
 
 ## Repository structure
 ```text
