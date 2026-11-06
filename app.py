@@ -55,7 +55,6 @@ def get_expected_columns():
     return list(model.feature_names_in_)
 
 expected_columns = get_expected_columns()
-st.subheader("Dataset Overview")
 dataset_col, features_col = st.columns(2)
 dataset_col.metric("Full dataset instances", f"{DATASET_INSTANCE_COUNT:,}")
 features_col.metric("Model input features", len(expected_columns))

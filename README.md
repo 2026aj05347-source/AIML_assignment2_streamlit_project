@@ -12,7 +12,7 @@ Build an interactive Streamlit application that loads pre-trained classification
 - **Files:** `test_data.csv` is the fixed labelled test set; `data/breast_cancer_full_dataset.csv` is included for reference and local reproducibility.
 
 ## c. GitHub Repository Link
-Add your own repository URL after you create a GitHub repository and push these files: **[PASTE YOUR GITHUB REPOSITORY URL HERE]**.
+**[AIML Assignment 2 GitHub Repository](https://github.com/2026aj05347-source/AIML_assignment2_streamlit_project)**
 
 ## d. Models used
 
