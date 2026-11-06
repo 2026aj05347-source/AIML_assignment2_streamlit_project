@@ -2,6 +2,7 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
+import seaborn as sns
 import streamlit as st
 import matplotlib.pyplot as plt
 from sklearn.metrics import (
@@ -55,6 +56,7 @@ def get_expected_columns():
     return list(model.feature_names_in_)
 
 expected_columns = get_expected_columns()
+st.subheader("Dataset Overview")
 dataset_col, features_col = st.columns(2)
 dataset_col.metric("Full dataset instances", f"{DATASET_INSTANCE_COUNT:,}")
 features_col.metric("Model input features", len(expected_columns))
@@ -163,14 +165,17 @@ with left:
     st.subheader(f"Confusion matrix · {detail_name}")
     cm = confusion_matrix(y_eval, detail_preds, labels=[0, 1])
     fig, ax = plt.subplots()
-    im = ax.imshow(cm)
-    ax.set_xticks([0, 1], labels=["Pred 0", "Pred 1"])
-    ax.set_yticks([0, 1], labels=["Actual 0", "Actual 1"])
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt="d",
+        cmap="Blues",
+        xticklabels=["Pred 0", "Pred 1"],
+        yticklabels=["Actual 0", "Actual 1"],
+        ax=ax,
+    )
     ax.set_xlabel("Predicted label")
     ax.set_ylabel("True label")
-    for (i, j), val in np.ndenumerate(cm):
-        ax.text(j, i, str(val), ha="center", va="center")
-    fig.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
     st.pyplot(fig)
     plt.close(fig)
 with right:
