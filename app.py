@@ -12,6 +12,7 @@ from sklearn.metrics import (
 ROOT = Path(__file__).parent
 MODEL_DIR = ROOT / "model"
 TARGET_COL = "target"
+DATASET_INSTANCE_COUNT = 569
 MODEL_FILES = {
     "Logistic Regression": "logistic_regression.joblib",
     "Decision Tree": "decision_tree.joblib",
@@ -54,6 +55,12 @@ def get_expected_columns():
     return list(model.feature_names_in_)
 
 expected_columns = get_expected_columns()
+st.subheader("Dataset Overview")
+dataset_col, features_col = st.columns(2)
+dataset_col.metric("Full dataset instances", f"{DATASET_INSTANCE_COUNT:,}")
+features_col.metric("Model input features", len(expected_columns))
+st.caption("These counts describe the complete UCI dataset. The uploaded CSV is the labelled test split used for evaluation.")
+
 uploaded = st.file_uploader("Upload test dataset (CSV)", type=["csv"])
 
 if uploaded is None:

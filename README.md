@@ -59,6 +59,8 @@ streamlit run app.py
 Streamlit prints a local URL (usually `http://localhost:8501`) in the terminal; open it in a browser. To reproduce the saved models and test split before starting the app, run `python train.py`. This writes five pipelines under `model/` and recreates `test_data.csv`. Upload `test_data.csv` in the app to check the metrics and confusion matrix.
 
 ## Deploy on Streamlit Community Cloud
+**Live app:** [Open the deployed Streamlit app](https://aiml-assignment2-vinod.streamlit.app/)
+
 Docker is not required for Streamlit Community Cloud. It installs the packages listed in `requirements.txt` and runs the app entry point you select.
 
 1. Push the project to GitHub, including `app.py`, `requirements.txt`, and the `model/` files used by the app.
